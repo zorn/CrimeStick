@@ -7,24 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 #import "PINViewController.h"
 
-@interface CrimeStickViewController : UIViewController <PINViewControllerDelegate>
+@interface CrimeStickViewController : UIViewController <PINViewControllerDelegate, CLLocationManagerDelegate>
 {
     UIButton *mainButton;
 	NSTimer *timer;
 	
 	float secondsSinceButtonReleased;
 	BOOL inDistress;
+	
+	NSMutableArray *pastLocations;
 }
 @property (nonatomic, retain) IBOutlet UIButton *mainButton;
 @property (nonatomic, assign) float secondsSinceButtonReleased; 
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 - (void)setupDefaultButtonState;
 - (IBAction)startTracking:(id)sender;
 - (IBAction)buttonReleased:(id)sender;
 - (void)distressCall;
+- (void)publishLocationToServer:(CLLocation *)loc;
 - (void)timerFireMethod:(NSTimer*)theTimer;
 - (void)updateUI;
 
