@@ -179,7 +179,7 @@
 		status = @"Safe for now";
 	}
 	
-	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:@"lat", [NSString stringWithFormat:@"%f",loc.coordinate.latitude], @"lon", [NSString stringWithFormat:@"%f",loc.coordinate.longitude], @"status", status, nil];
+	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",loc.coordinate.latitude], @"lat", [NSString stringWithFormat:@"%f",loc.coordinate.longitude], @"lon", status, @"status", nil];
 	
 	NSError *e = nil;
 	NSString *result = [writer stringWithObject:d error:&e];
